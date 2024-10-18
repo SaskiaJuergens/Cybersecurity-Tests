@@ -1,0 +1,28 @@
+function showTask(taskId, clickedLink = null) {
+    // Hide all tasks
+    document.getElementById('task1').style.display = 'none';
+    document.getElementById('task2').style.display = 'none';
+    document.getElementById('task3').style.display = 'none';
+    
+    // Show the selected task
+    document.getElementById(taskId).style.display = 'block';
+
+    // Remove the 'active' class from all links
+    var navLinks = document.querySelectorAll('.navbar li a');
+    navLinks.forEach(function(link) {
+      link.classList.remove('active');
+    });
+
+    // If a link was clicked, set it as active
+    if (clickedLink) {
+      clickedLink.classList.add('active');
+    } else {
+      // If no link is clicked, set the first link as active by default
+      document.querySelector('.navbar li a').classList.add('active');
+    }
+  }
+
+  // Show the first task by default when the page loads
+  window.onload = function() {
+    showTask('task1');  // No link passed here, so the first link will be set as active
+  };

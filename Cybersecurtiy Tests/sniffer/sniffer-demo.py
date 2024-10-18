@@ -7,6 +7,9 @@ def main():
 
     while True:
         raw_data, addr = connection.recvfrom(65536)
+        dest_mac, src_mac, eth_proto, data = etthnet_frame(raw_data)
+        print('\nEthernet Frame:')
+        print('Destination: {}, Source: {}, Protocol: {}'.format(dest_mac, src_mac, eth_proto))
 
 #unpack ethernet frame das im Eingabewert data derfuntion gegeben wird
 #die ersten 14 Bytes des Frames (Ziel-Window-Adress, Quell-Window-Adresse, Protokolltyp) 
@@ -21,3 +24,5 @@ def etthnet_frame(data):
 def get_window_addr(bytes_addr):
     bytes_str = map('{:02x}'.format, bytes_addr)
     return ':'.join(bytes_str).upper()
+
+main()
