@@ -100,104 +100,127 @@
   </div>
 
   <div id="task4" class="content" style="display:none;">
-    <!-- die Verschiedenen Formen in grid tabelle rein und validieren, 
-    ob der input richtig ist als integer, text etc. + nice layout/labels design-->
     <form id="myForm" novalidate>
       <h1>Formular</h1>
-
+      
+      <div class="grid-container">
       <!-- Name -->
-      <div class="form-group">
-        <label for="name">Name:</label>
-        <input type="text" placeholder="Name Surname" id="name" name="name" required>
-        <span class="error-message" id="nameError"></span>
-      </div>
-
-      <!-- E-Mail -->
-      <div class="form-group">
-        <label for="email">E-Mail:</label>
-        <input type="email" placeholder="email@kut.de" id="email" name="email" required>
-        <span class="error-message" id="emailError"></span>
-      </div>
-
-      <!-- Birthday -->
-      <div class="form-group">
-        <label for="name">Birthday:</label>
-        <input type="date" id="birthday" name="birthday" required lang="en-GB">
-        <span class="error-message" id="nameError"></span>
-      </div>
-
-      <!-- Subject -->
-      <div class="form-group">
-        <label for="subject">Subject:</label>
-        <select id="subject" name="subject" required>
-          <option value="">Select</option>
-          <option value="anfrage">General Question</option>
-          <option value="feedback">Feedback</option>
-        </select>
-        <span class="error-message" id="subjectError"></span>
-      </div>
-
-      <!-- Message -->
-      <div class="form-group">
-        <label for="message">Message:</label>
-        <textarea id="message" name="message" rows="4" required></textarea>
-        <span class="error-message" id="messageError"></span>
-      </div>
-
-      <!-- Gender Slider -->
-      <div class="form-group">
-        <label for="gender">Gender:</label>
-        <div class="slider-container">
-          <span id="maleLabel">Male</span>
-          <input type="range" id="gender" name="gender" min="0" max="10" value="1" step="1" oninput="updateGenderLabel(this.value)">
-          <span id="femaleLabel">Female</span>
+      <div class="grid-item">
+        <div class="form-group">
+          <label for="name">Name:</label>
+          <input type="text" placeholder="Name Surname" id="name" name="name" required>
+          <span class="error-message" id="nameError"></span>
         </div>
       </div>
 
-      <!-- Multiply choise: Interests -->
-      <div class="form-group checkbox-group">
-        <label>Interests:</label>
-        <form class="interests">
-          <input type="checkbox" id="sports" name="interests" value="Sports">
-          <label for="sports">I like sports</label><br>
-          <input type="checkbox" id="music" name="interests" value="Music">
-          <label for="music">I like music</label><br>
-          <input type="checkbox" id="games" name="interests" value="Games">
-          <label for="tech">I like gaming</label><br>
-          <input type="checkbox" id="art" name="interests" value="Art">
-          <label for="art">I like art</label><br>
-          <input type="checkbox" id="travel" name="interests" value="Travel">
-          <label for="travel">I like traveling</label>
-        </form>
+      <!-- Birthday -->
+      <div class="grid-item">
+        <div class="form-group">
+          <label for="birthday">Birthday:</label>
+          <input type="date" id="birthday" name="birthday" required lang="en-GB">
+          <span class="error-message" id="birthdayError"></span>
+        </div>
       </div>
 
-      <!-- Favortie Color -->
-      <div class="form-group">
-        <label for="color">Favorite color:</label>
-        <input type="color" id="color" name="color" value="#ff0000">
+      <!-- E-Mail -->
+      <div class="grid-item">
+        <div class="form-group">
+          <label for="email">E-Mail:</label>
+          <input type="email" placeholder="email@kut.de" id="email" name="email" required>
+          <span class="error-message" id="emailError"></span>
+        </div>
       </div>
 
-      <!-- Dark Mode -->
-      <div class="form-group checkbox-group">
-        <form class="modus">
-          <input type="radio" id="lightmode" name="modus" value="lightmode">
-          <label for="sports">Lightmode</label><br>
-          <input type="radio" id="darkmode" name="modus" value="darkmode">
-          <label for="music">Darkmode</label><br>
-        </form>
+
+      <!-- Subject -->
+      <div class="grid-item">
+        <div class="form-group">
+          <label for="subject">Subject:</label>
+          <select id="subject" name="subject" required>
+            <option value="">Select</option>
+            <option value="anfrage">General Question</option>
+            <option value="feedback">Feedback</option>
+          </select>
+          <span class="error-message" id="subjectError"></span>
+        </div>
       </div>
 
-      <!-- Policy checkbox -->
-    <div class="form-group checkbox-group1">
-      <input type="checkbox" id="terms" name="terms" required>
-      <label for="terms">I agree to the privacy policy.</label>
-      <span class="error-message" id="termsError"></span>
+      <!-- Message -->
+      <div class="grid-item" style="grid-column: span 2; grid-row: span 2;">
+        <div class="form-group">
+          <label for="message">Message:</label>
+          <textarea id="message" name="message" rows="4" required></textarea>
+          <span class="error-message" id="messageError"></span>
+        </div>
+      </div>
+
+      <!-- Gender Slider -->
+      <div class="grid-item" style="grid-column: span 2;">
+        <div class="form-group">
+          <div class="slider-container">
+            <span id="maleLabel">Male</span>
+            <input type="range" id="gender" name="gender" min="0" max="10" value="1" step="1" oninput="updateGenderLabel(this.value)">
+            <span id="femaleLabel">Female</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Interests -->
+      <div class="grid-item">
+        <div class="form-group checkbox-group" style="grid-row: span 2;">
+            <label>Interests:</label>
+            <br/>
+            <div class="interests-container">
+              <label1 for="sports">I like sports</label1>
+              <input type="checkbox" id="sports" name="interests" value="Sports">
+              <label1 for="music">I like music</label1>
+              <input type="checkbox" id="music" name="interests" value="Music">
+              <label1 for="games">I like gaming</label1> 
+              <input type="checkbox" id="games" name="interests" value="Games">
+              <label1 for="art">I like art</label1>  
+              <input type="checkbox" id="art" name="interests" value="Art">
+              <label1 for="travel">I like traveling</label1>
+              <input type="checkbox" id="travel" name="interests" value="Travel">
+            </div>
+        </div>
     </div>
 
-    <!-- Send-Button -->
-    <div class="form-group1">
-        <button type="submit">Send</button>
+    <!-- Favorite Color -->
+    <div class="grid-item">
+        <div class="form-group">
+            <label for="color">Favorite color:</label>
+            <input type="color" id="color" name="color" value="#ff0000" class="color-input">
+        </div>
+        <br><br><br><br>
+        <div class="form-group checkbox-group">
+          <div class="modus-container">
+            <label1 for="lightmode">Lightmode</label1>
+            <input type="radio" id="lightmode" name="modus" value="lightmode">
+          </div>
+        <br><br>
+          <div class="modus-container">
+            <label1 for="darkmode">Darkmode</label1>
+            <input type="radio" id="darkmode" name="modus" value="darkmode">
+          </div>
+      </div>
     </div>
+
+    <!-- Policy checkbox -->
+    <div class="grid-item" style="grid-column: span 2; display: flex; justify-content: flex-end; align-items: center;">
+      <div class="checkbox-container" style="display: flex; align-items: center;">
+        <input type="checkbox" id="terms" name="terms" required>
+        <label2 for="terms">I agree to the privacy policy.</label2>
+        <span class="error-message" id="termsError"></span>
+      </div>
+    </div>
+
+      
+      <div class="grid-item" style="grid-column: span 2;">
+        <!-- Send-Button -->
+        <div class="form-group1">
+          <button type="submit">Send</button>
+        </div>
+      </div>
     </form>
   </div>
 

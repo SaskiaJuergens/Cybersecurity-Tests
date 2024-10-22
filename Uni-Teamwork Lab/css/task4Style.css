@@ -1,122 +1,147 @@
-  /*Formular*/
-  h1 {
+/* Formular */
+h1 {
     text-align: center;
     margin-bottom: 20px;
-  }
-  
-  .form-group {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 10px;
-    margin-bottom: 15px;
-  }
-
-  .form-group1 {
-    display: flex;
-    justify-content: center; /* Centers the button */
-    margin-top: 20px; /* Optional: Adds space above the button */
 }
 
-  
-  label {
-    align-self: center;
-    font-weight: bold;
-  }
-  
-  input, select, textarea, input[type="range"], input[type="color"] {
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto; /* 2 column */
+    gap: 15px;
+    background-color: white;
+    padding-left: 100px;
+    padding-right: 100px;
+    padding-top: 50px;
+}
+
+.grid-item {
+    background-color: white;
+    padding: 20px;
+    font-size: 16px; /* Schriftgröße */
+}
+
+/* Form gruppen */
+.form-group {
+    display: flex;
+    flex-direction: column; /* Elemente vertikal anordnen */
+}
+
+.checkbox-group {
+    display: flex; /* Flexbox für Checkboxen */
+    flex-direction: column; /* Vertikale Anordnung */
+}
+
+.interests-container {
+    display: flex; 
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px; /* Abstand zwischen Checkboxen */
+}
+
+.modus-container {
+    display: flex;
+    /*flex-wrap: wrap; /* Zeilenumbruch */
+}
+
+.checkbox-container {
+    display: flex;
+    gap: 10px;
+}
+
+/* Richtlinien Checkbox-Container */
+.checkbox-container {
+    justify-content: flex-end; /* Rechtsbündige Ausrichtung */
+    align-items: center; /* Vertikale Zentrierung */
+}
+
+label {
+    flex: 0 0 auto;
+    text-align: left;
+    font-weight: bold; /* Label fett machen */
+    font-size: 1.1em;
+}
+label1 {
+    flex: 0 0 auto;
+    text-align: right;
+}
+label2 {
+    flex: 0 0 auto;
+    text-align: left;
+}
+
+input, select, textarea, input[type="range"], input[type="color"] {
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 4px;
     width: 100%;
-  }
-  
-  button {
+}
+
+.form-group1 {
+    display: flex;
+    justify-content: center;
+    grid-column: span 2;
+}
+
+button {
     width: 400px; /* Set a fixed width */
-    padding: 10px 20px; /* Padding for better appearance */
-    background-color: #4CAF50; /* Green background */
-    color: white; /* White text */
+    padding: 10px 20px; 
+    background-color: #4CAF50; 
+    color: white;
     border: none;
-    border-radius: 5px; /* Rounded corners */
+    border-radius: 5px;
     cursor: pointer; /* Pointer on hover */
-  }
-  button:hover {
-    background-color: #45a049; /* Darker green on hover */
-  }
-
-  .checkbox-group {
-    grid-template-columns: 1fr;
-    display: grid;
-    align-items: center;
-  }
-
-  /* Style for the checkbox group */
-  .checkbox-group1 {
-    display: flex; /* Flexbox layout to align items horizontally */
-    padding-top: 40px;
-    justify-content: right; 
 }
 
-/* Style for the checkbox */
-.checkbox-group1 input {
-    width: 20px; /* Width of the checkbox */
-    height: 20px; /* Height of the checkbox */
-    border-radius: 3px; /* Rounded corners */
-    position: relative; /* Positioning for pseudo-element */
-    cursor: pointer; /* Pointer cursor on hover */
+button:hover {
+    background-color: #45a049;
 }
 
-  
-  .error-message {
+.error-message {
     grid-column: span 2;
     color: red;
     font-size: 12px;
-  }
-  
-  .gender-slider {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-  }
-  
-  .slider-container {
+}
+
+.slider-container {
     display: flex;
     align-items: center;
     justify-content: space-between;
-  }
-  
-  #genderLabel {
-    grid-column: span 2;
-    text-align: center;
-    font-size: 16px;
-    font-weight: bold;
-  }
-  
-  #maleLabel, #femaleLabel {
-    font-size: 15px;
-  }
+}
 
-
-  /* rainbow color slider */
+/* Rainbow color slider */
 input[type="range"] {
-    -webkit-appearance: none; /*remove default styling applied by browsers,*/
+    -webkit-appearance: none; /* Remove default styling applied by browsers */
     width: 100%;
+    outline: none; 
+}
+/* Styles for WebKit-based browsers (Chrome, Safari) */
+input[type="range"]::-webkit-slider-runnable-track {
     height: 5px;
     border-radius: 5px;
     background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
-    outline: none;
-    opacity: 0.9;
-    transition: opacity 0.2s;
-  }
-  
-  input[type="range"]::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    width: 20px;
+}
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Remove default styling */
+    width: 20px; 
     height: 20px;
-    border-radius: 50%; /*circle */
+    border-radius: 50%;
     background: #ffffff;
-    border: 2px solid #ccc;
-  }
+    border: 2px solid #ccc; 
+    cursor: pointer;
+    margin-top: -8px; /* Adjust this value to center the thumb */
+}
 
-  
+/* Color choise Input */
+.color-input {
+    -webkit-appearance: none;
+    width: 50px;
+    height: 50px;
+    border: 0.2px solid #ccc;
+    border-radius: 5px; 
+    cursor: pointer;
+}
 
-  
-  
+
+.color-input {
+    background-color: transparent;
+}
