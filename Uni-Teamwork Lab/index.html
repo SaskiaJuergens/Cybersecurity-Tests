@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-GB">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/stylesheet.css">
-    <title>Responsive Page</title>
+    <link rel="stylesheet" href="css/stylesheet.css"> 
+    <link rel="stylesheet" href="css/task123.css"> 
+    <link rel="stylesheet" href="css/task4Style.css">
+    <title>Web Technologie and Digital grafic</title>
 </head>
 <body>
 
@@ -14,6 +16,7 @@
       <li><a class="active" href="#" onclick="showTask('task1', this)">Task 1</a></li>
       <li><a href="#" onclick="showTask('task2', this)">Task 2</a></li>
       <li><a href="#" onclick="showTask('task3', this)">Task 3</a></li>
+      <li><a href="#" onclick="showTask('task4', this)">Task 4</a></li>
     </ul>
   </nav>
 
@@ -43,7 +46,7 @@
 
   <!-- Task 2 Section -->
   <div id="task2" class="content" style="display:block;"> 
-    <h2>Exercise 2: Bildlayout</h2>
+    <h2>Exercise 2: Image layout</h2>
     
     <div class="image-container">
         <!-- Reihe 1 -->
@@ -96,6 +99,107 @@
     </div>
   </div>
 
+  <div id="task4" class="content" style="display:none;">
+    <!-- die Verschiedenen Formen in grid tabelle rein und validieren, 
+    ob der input richtig ist als integer, text etc. + nice layout/labels design-->
+    <form id="myForm" novalidate>
+      <h1>Formular</h1>
+
+      <!-- Name -->
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" placeholder="Name Surname" id="name" name="name" required>
+        <span class="error-message" id="nameError"></span>
+      </div>
+
+      <!-- E-Mail -->
+      <div class="form-group">
+        <label for="email">E-Mail:</label>
+        <input type="email" placeholder="email@kut.de" id="email" name="email" required>
+        <span class="error-message" id="emailError"></span>
+      </div>
+
+      <!-- Birthday -->
+      <div class="form-group">
+        <label for="name">Birthday:</label>
+        <input type="date" id="birthday" name="birthday" required lang="en-GB">
+        <span class="error-message" id="nameError"></span>
+      </div>
+
+      <!-- Subject -->
+      <div class="form-group">
+        <label for="subject">Subject:</label>
+        <select id="subject" name="subject" required>
+          <option value="">Select</option>
+          <option value="anfrage">General Question</option>
+          <option value="feedback">Feedback</option>
+        </select>
+        <span class="error-message" id="subjectError"></span>
+      </div>
+
+      <!-- Message -->
+      <div class="form-group">
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="4" required></textarea>
+        <span class="error-message" id="messageError"></span>
+      </div>
+
+      <!-- Gender Slider -->
+      <div class="form-group">
+        <label for="gender">Gender:</label>
+        <div class="slider-container">
+          <span id="maleLabel">Male</span>
+          <input type="range" id="gender" name="gender" min="0" max="10" value="1" step="1" oninput="updateGenderLabel(this.value)">
+          <span id="femaleLabel">Female</span>
+        </div>
+      </div>
+
+      <!-- Multiply choise: Interests -->
+      <div class="form-group checkbox-group">
+        <label>Interests:</label>
+        <form class="interests">
+          <input type="checkbox" id="sports" name="interests" value="Sports">
+          <label for="sports">I like sports</label><br>
+          <input type="checkbox" id="music" name="interests" value="Music">
+          <label for="music">I like music</label><br>
+          <input type="checkbox" id="games" name="interests" value="Games">
+          <label for="tech">I like gaming</label><br>
+          <input type="checkbox" id="art" name="interests" value="Art">
+          <label for="art">I like art</label><br>
+          <input type="checkbox" id="travel" name="interests" value="Travel">
+          <label for="travel">I like traveling</label>
+        </form>
+      </div>
+
+      <!-- Favortie Color -->
+      <div class="form-group">
+        <label for="color">Favorite color:</label>
+        <input type="color" id="color" name="color" value="#ff0000">
+      </div>
+
+      <!-- Dark Mode -->
+      <div class="form-group checkbox-group">
+        <form class="modus">
+          <input type="radio" id="lightmode" name="modus" value="lightmode">
+          <label for="sports">Lightmode</label><br>
+          <input type="radio" id="darkmode" name="modus" value="darkmode">
+          <label for="music">Darkmode</label><br>
+        </form>
+      </div>
+
+      <!-- Policy checkbox -->
+    <div class="form-group checkbox-group1">
+      <input type="checkbox" id="terms" name="terms" required>
+      <label for="terms">I agree to the privacy policy.</label>
+      <span class="error-message" id="termsError"></span>
+    </div>
+
+    <!-- Send-Button -->
+    <div class="form-group1">
+        <button type="submit">Send</button>
+    </div>
+    </form>
+  </div>
 
 
   <script src="js/javascript"></script>

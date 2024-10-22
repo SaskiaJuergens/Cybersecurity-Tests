@@ -3,6 +3,7 @@ function showTask(taskId, clickedLink = null) {
     document.getElementById('task1').style.display = 'none';
     document.getElementById('task2').style.display = 'none';
     document.getElementById('task3').style.display = 'none';
+    document.getElementById('task4').style.display = 'none';
     
     // Show the selected task
     document.getElementById(taskId).style.display = 'block';
