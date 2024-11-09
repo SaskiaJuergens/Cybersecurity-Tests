@@ -1,29 +1,21 @@
-function showTask(taskId, clickedLink = null) {
-    // Hide all tasks
-    document.getElementById('task1').style.display = 'none';
-    document.getElementById('task2').style.display = 'none';
-    document.getElementById('task3').style.display = 'none';
-    document.getElementById('task4').style.display = 'none';
-    
-    // Show the selected task
-    document.getElementById(taskId).style.display = 'block';
+function showTask(taskId, link) {
+  // Alle Aufgaben ausblenden
+  let tasks = document.querySelectorAll('.content');
+  tasks.forEach(function(task) {
+      task.style.display = 'none';
+  });
 
-    // Remove the 'active' class from all links
-    var navLinks = document.querySelectorAll('.navbar li a');
-    navLinks.forEach(function(link) {
+  // Alle Links zurücksetzen
+  let navLinks = document.querySelectorAll('.nav-link');
+  navLinks.forEach(function(link) {
       link.classList.remove('active');
-    });
+  });
 
-    // If a link was clicked, set it as active
-    if (clickedLink) {
-      clickedLink.classList.add('active');
-    } else {
-      // If no link is clicked, set the first link as active by default
-      document.querySelector('.navbar li a').classList.add('active');
-    }
-  }
+  // Den spezifischen Task anzeigen
+  document.getElementById(taskId).style.display = 'block';
 
-  // Show the first task by default when the page loads
-  window.onload = function() {
-    showTask('task1');  // No link passed here, so the first link will be set as active
-  };
+  // Den Link als aktiv markieren
+  link.classList.add('active');
+}
+
+
