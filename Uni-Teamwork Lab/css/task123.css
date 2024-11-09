@@ -15,27 +15,23 @@ table {
     width: 25%; /* Feste Breite für jede Spalte */
   }
   
-  
-  /*task2*/
-  .image-container {
-    width: 100%; /* Breite auf 100% setzen */
-    height: 100%;
-    display: flex; /* Flexbox für die Anordnung */
-    flex-direction: column; /* Anordnung in einer Spalte */
-  }
-  
-  .row {
-    display: flex; /* Flexbox für die Reihen */
-    width: 100%; /* Breite auf 100% setzen */
-    height: 300px;
-  }
-  
-  .small-image {
+ /*task2*/  
+.image-container {
     width: 100%;
-    height: 100%;
-    margin: 0; /* Kein Abstand zwischen den Bildern */
-  }
-  
+    height: auto;
+}
+.row {
+  display: flex;
+  width: 100%; 
+  height: 300px;
+}
+.stretch-image {
+    width: 100%; 
+    height: 300px;
+    object-fit: cover;
+    display: block; 
+}
+
   
   /*task 3*/
   /* Grid container styling */
