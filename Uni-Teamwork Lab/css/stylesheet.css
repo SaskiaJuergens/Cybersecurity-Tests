@@ -2,8 +2,10 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  padding-top: 50px; /* Space for the navbar */
-  padding: 20px; /* Optional: Abstand um den Inhalt */
+  
+}
+header {
+  background-image: linear-gradient(100deg, #b6c3fd, #6f9af7);
 }
 
 /* Navbar styling */
@@ -11,6 +13,10 @@ nav {
   position: fixed;
   top: 0;
   width: 100%;
+}
+
+.navbar-brand, .text-primary {
+  color: #0a58ca;
 }
 
 ul.navbar {

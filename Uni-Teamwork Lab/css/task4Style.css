@@ -60,11 +60,11 @@ label {
     font-weight: bold; /* Label fett machen */
     font-size: 1.1em;
 }
-label1 {
+form-check-label1 {
     flex: 0 0 auto;
     text-align: right;
 }
-label2 {
+form-check-label2 {
     flex: 0 0 auto;
     text-align: left;
 }
