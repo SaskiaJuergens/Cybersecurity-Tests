@@ -4,22 +4,6 @@ h1 {
     margin-bottom: 20px;
 }
 
-.grid-container1 {
-    display: grid;
-    grid-template-columns: auto auto; /* 2 column */
-    gap: 15px;
-    background-color: white;
-    padding-left: 100px;
-    padding-right: 100px;
-    padding-top: 50px;
-}
-
-.grid-item {
-    background-color: white;
-    padding: 20px;
-    font-size: 16px; /* Schriftgröße */
-}
-
 /* Form gruppen */
 .form-group {
     display: flex;
@@ -85,7 +69,7 @@ input, select, textarea, input[type="range"], input[type="color"] {
 button {
     width: 400px; /* Set a fixed width */
     padding: 10px 20px; 
-    background-color: #4CAF50; 
+    background-color:  rgba(39, 87, 244, 0.2); 
     color: white;
     border: none;
     border-radius: 5px;
@@ -107,6 +91,10 @@ button:hover {
     align-items: center;
     justify-content: space-between;
 }
+
+
+
+
 
 /* Rainbow color slider */
 input[type="range"] {

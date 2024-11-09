@@ -18,4 +18,17 @@ function showTask(taskId, link) {
   link.classList.add('active');
 }
 
+function showTask(taskId, element) {
+  // Entfernt die 'active' Klasse von allen Links
+  const links = document.querySelectorAll('.nav-link');
+  links.forEach(link => link.classList.remove('active'));
+
+  // Fügt die 'active' Klasse zum geklickten Link hinzu
+  element.classList.add('active');
+
+  // Zeigt den entsprechenden Task an
+  const tasks = document.querySelectorAll('.content');
+  tasks.forEach(task => task.style.display = 'none'); // Alle Tasks ausblenden
+  document.getElementById(taskId).style.display = 'block'; // Den gewünschten Task anzeigen
+}
 

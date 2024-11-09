@@ -18,54 +18,6 @@ section {
   width: 100%;
   height: 100vh;
 }
-section {
-  background-image: url(../Frauka.jpg);
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-header {
-  flex-direction: column;
-  gap: 20px;
-  background-image: linear-gradient(100deg, rgba(71, 54, 152, 0.15), rgba(0, 9, 172, 0.2));
-}
-
-
-/* Navbar styling */
-nav {
-  flex-direction: column;
-  gap: 30px;
-}
-.nav-items {
-  font-size: 16px;
-}
-.navbar-brand fw-bold fs-2 {
-  font-size: 24px;
-  margin: 20px 0;
-}
-section {
-  height: auto;
-  padding: 50px 0
-}
-.section-box {
-  height: auto;
-}
-header {
-  flex-direction: column;
-  gap: 20px;
-}
-.header-logo {
-  font-size: 24px;
-  margin: 20px 0;
-}
-nav {
-  flex-direction: column;
-  gap: 30px;
-}
-.nav-items {
-  font-size: 16px;
-}
-
 
 section {
   background-image: url(images/background.jpg);
@@ -73,15 +25,10 @@ section {
   background-size: cover;
   background-repeat: no-repeat;
 }
-#hero .section-box::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: linear-gradient(transparent 60%, rgb(4, 5, 61) ) ;
-  z-index: 1;
+.content {
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-bottom: 30px;
 }
 .section-box {
   background-color: rgba(71, 54, 152, 0.15);
@@ -89,28 +36,44 @@ section {
   border: 2px solid rgba(0, 9, 172, 0.2);
   box-shadow: inset 0 0 5px rgba(64, 103, 229, 0.2);
   border-radius: 30px;
-  height: 85vh;
+  height: 85vh;  
   width: 85%;
-  overflow: hidden;
+  overflow-y: auto; /* vertical slide */
+  overflow-x: hidden; /* horizontel slide */
 }
-.content-wrap {
-  padding: 20px 50px;
+/* swipen for mobile phone */
+@media (max-width: 768px) {
+  .section-box {
+    height: 100vh;  
+    overflow-y: scroll;  
+  }
+}
+.section-box::-webkit-scrollbar {
+  width: 10px;
+}
+.section-box::-webkit-scrollbar-thumb {
+  background-color: rgba(1, 33, 114, 0.5);  /* Dunkler Scrollbalken */
+  border-radius: 10px;
+}
+.section-box::-webkit-scrollbar-track {
+  background-color: rgba(15, 0, 68, 0.1);  /* Heller Hintergrund für den Track */
 }
 
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.header-logo {
-  font-size: 32px;
-  font-weight: 600;
+.section-title {
+  font-size: 4rem;
+  line-height: 1.2;
+  font-weight: 800;
   letter-spacing: 1px;
   text-transform: uppercase;
+  margin-bottom: 20px;
+  animation: bottomIn 1s ease-in-out forwards;
+  animation-delay: 0.3s;
+  opacity: 0;
 }
-.header-logo span {
-  color: #00FF26;
-}
+
+
+
+/* Navbar styling */
 nav {
   display: flex;
   align-items: center;
@@ -127,84 +90,29 @@ nav {
   position: relative;
   display: flex;
   justify-content: center;
-}
-nav .active {
-  color: #00FF26;
-}
-.nav-items::after {
-  content: '';
-  position: absolute;
-  bottom: -10px;
-  width: 100%;
-  height: 2px;
-  background-color: white;
-  box-shadow: 0 0 5px white;
-  transform: scale(0);
-  transform-origin: left;
-  transition: 0.3s;
-}
-.nav-items:hover::after {
-  transform: scale(1);
-}
-.active:hover::after {
-  background-color: #00FF26;
-  box-shadow: 0 0 5px #00FF26;
-}
-
-.hero-content h3 {
-  font-size: 2rem;
-  font-weight: 400;
-  letter-spacing: 50px;
-}
-.hero-content h1 {
-  font-size: 6rem;
-  font-weight: 800;
-  letter-spacing: 30px;
-  text-transform: uppercase;
-  margin-top: -10px;
-}
-.hero-content {
-  padding-top: 50px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.hero-img {
-  width: 47%;
-  margin-top: -150px;
-  animation: planetAn 120s linear infinite;
-}
-.hero-btn {
-  font-size: 18px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  background-color: transparent;
   color: white;
-  border: 2px solid white;
-  border-radius: 50px;
-  height: 50px;
-  width: 250px;
-  margin-top: -150px;
-  z-index: 2;
-  cursor: pointer;
-  transition: 0.3s;
 }
-.hero-btn:hover {
-  background-color: white;
-  color: black;
+.navbar .nav-link {
+  color: rgb(77, 86, 255); /* Setzt den Text der Navbar-Links auf weiß */
 }
-
-
-.section-title {
-  font-size: 4rem;
-  line-height: 1.2;
-  font-weight: 800;
+.navbar .nav-link:hover {
+  color: #afaaff; /* Setzt den Text bei Hover auf eine etwas hellere Farbe, z.B. ein graues Weiß */
+}
+.navbar .nav-link.active {
+  color: white; /* Setzt die Farbe des aktiven Links auf schwarz */
+}
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  background-image: linear-gradient(100deg, rgba(28, 35, 152, 0.8), rgba(71, 54, 152, 0.2));
+}
+.header-logo {
+  font-size: 32px;
+  font-weight: 600;
   letter-spacing: 1px;
   text-transform: uppercase;
-  margin-bottom: 20px;
-  animation: bottomIn 1s ease-in-out forwards;
-  animation-delay: 0.3s;
-  opacity: 0;
 }
+
 
