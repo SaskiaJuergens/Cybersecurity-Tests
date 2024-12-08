@@ -1,0 +1,54 @@
+.board {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    grid-template-rows: repeat(3, 100px);
+    gap: 5px;
+}
+.cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border: 1px solid #000;
+    font-size: 70px; 
+    cursor: pointer;
+    user-select: none;
+    height: 100px;
+    width: 100px;
+    color: black; 
+}
+
+/* task 7: Snake */
+.wrapper {
+    width: 65vmin;
+    height: 70vmin;
+    display: flex;
+    overflow: hidden;
+    flex-direction: column;
+    border-radius: 5px;
+    background: #293447;
+}
+.game-details {
+    color: #88C6DC;
+    font-size: 1.2rem;
+    font-weight: 500;
+    padding: 20px 27px;
+    display: felx;
+    justify-content: space-between;
+}
+.play-board {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template: repeat( 30, 1fr) / repeat(30, 1fr);
+    background: #212837;
+}
+.play-board .food{
+    background: #FF003D;
+}
+.play-board .head{
+    background: #60CBFF;
+}
+.play-board .snake {
+    background: #3CB371;
+  }

@@ -75,6 +75,7 @@ section {
 
 /* Navbar styling */
 nav {
+  position: fixed;
   display: flex;
   align-items: center;
   gap: 40px;

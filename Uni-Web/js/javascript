@@ -32,3 +32,5 @@ function showTask(taskId, element) {
   document.getElementById(taskId).style.display = 'block'; // Den gewünschten Task anzeigen
 }
 
+
+
