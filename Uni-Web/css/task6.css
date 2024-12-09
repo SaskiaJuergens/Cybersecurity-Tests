@@ -21,7 +21,7 @@
 /* task 7: Snake */
 .wrapper {
     width: 65vmin;
-    height: 70vmin;
+    height: 50vmin;
     display: flex;
     overflow: hidden;
     flex-direction: column;
@@ -36,19 +36,9 @@
     display: felx;
     justify-content: space-between;
 }
-.play-board {
-    width: 100%;
-    height: 100%;
-    display: grid;
-    grid-template: repeat( 30, 1fr) / repeat(30, 1fr);
+canvas {
+    /* width: 100%;
+    height: 100%; */
+    display: block;
     background: #212837;
 }
-.play-board .food{
-    background: #FF003D;
-}
-.play-board .head{
-    background: #60CBFF;
-}
-.play-board .snake {
-    background: #3CB371;
-  }

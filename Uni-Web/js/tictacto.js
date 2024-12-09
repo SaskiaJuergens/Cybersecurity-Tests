@@ -95,109 +95,92 @@ document.getElementById('restartButton').addEventListener('click', restartGame);
 ///////////////////////////////////////////////
 ///////////////////////////////////////////////
 //snake
-const playBoard = document.querySelector(".play-board");
+///////////////////////////////////////////////
+const canvas = document.getElementById('gameCanvas');
+const ctx = canvas.getContext('2d');
 
-let foodX, foodY;
-let snake = [{ x: 5, y: 10 }];  // Snake starts with one segment (head)
-let score = 0;
-let gameInterval;
-let gridSize = 30;
-let speed = 200;
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
 
-const changeFoodPosition = () => {
-    do {
-    foodX = Math.floor(Math.random() * 30) +1;
-    foodY = Math.floor(Math.random() * 30) +1;         
-    } while (isFoodOnSnake(foodX, foodY));
-}
-const isFoodOnSnake = (foodX, foodY) => {
-    return snake.some(segment => segment.x === foodX && segment.y === foodY);
-}
+const snakeSize = 40; // Snake size (doubled)
+const speed = 4; // Constant speed
+const snake = [{ x: 200, y: 200 }, { x: 160, y: 200 }, { x: 120, y: 200 }];
+let food = generateFood();
+let targetX = canvas.width / 2;
+let targetY = canvas.height / 2;
 
-const drawGame = () => {
-    score = 0;
-    snake = [{ x: 5, y: 10 }];
-    speedX = 0;
-    speedY = 0;
+// Detect mouse movement
+window.addEventListener('mousemove', (e) => {
+    targetX = e.clientX;
+    targetY = e.clientY;
+});
 
-    //food
-    let htmlMarkup = `<div class="food" style="grid-area: ${foodY} / ${foodX}"></div>`;
-    //snake head
-    snake.forEach((segment, index) => {
-        htmlMarkup += `<div class="snake" style="grid-area: ${segment.y + 1} / ${segment.x + 1}"></div>`;
-    });
-    playBoard.innerHTML = htmlMarkup;
-}
+function gameLoop() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-const moveSnake = () => {
-    let head = { ...snake[0] };
-    
-    // Update head position based on direction
-    head.x += speedX;
-    head.y += speedY;
-    
-    // Check if the snake hits the wall (wrap around)
-    if (head.x < 0) head.x = gridSize - 1;
-    if (head.x >= gridSize) head.x = 0;
-    if (head.y < 0) head.y = gridSize - 1;
-    if (head.y >= gridSize) head.y = 0;
-    
-    // Check if the snake eats food
-    if (head.x === foodX && head.y === foodY) {
-      score++;
-      changeFoodPosition();
+    // Calculate direction vector to the target (mouse position)
+    const angle = Math.atan2(targetY - snake[0].y, targetX - snake[0].x);
+    const dx = Math.cos(angle) * speed;
+    const dy = Math.sin(angle) * speed;
+
+    // Move the snake head
+    const newHead = {
+        x: snake[0].x + dx,
+        y: snake[0].y + dy,
+    };
+
+    // Add the new head position
+    snake.unshift(newHead);
+
+    // Check if the snake eats the food
+    if (
+        Math.hypot(snake[0].x - food.x, snake[0].y - food.y) < snakeSize
+    ) {
+        food = generateFood(); // Generate new food
     } else {
-      snake.pop();  // Remove last segment if no food is eaten
+        snake.pop(); // Remove the tail segment unless food is eaten
     }
-  
-    snake.unshift(head);  // Add the new head to the front
-  }
 
+    // Draw food
+    ctx.fillStyle = 'red';
+    ctx.beginPath();
+    ctx.arc(food.x, food.y, snakeSize / 2, 0, Math.PI * 2);
+    ctx.fill();
 
-// Handle mouse movement to follow the cursor
-const handleMouseMove = (e) => {
-    const rect = playBoard.getBoundingClientRect();
-    const mouseX = Math.floor((e.clientX - rect.left) / rect.width * gridSize);
-    const mouseY = Math.floor((e.clientY - rect.top) / rect.height * gridSize);
-    
-    // Determine direction of the snake's head movement towards the mouse
-    if (mouseX > snake[0].x) {
-      speedX = 1;
-      speedY = 0;
-    } else if (mouseX < snake[0].x) {
-      speedX = -1;
-      speedY = 0;
-    } else if (mouseY > snake[0].y) {
-      speedX = 0;
-      speedY = 1;
-    } else if (mouseY < snake[0].y) {
-      speedX = 0;
-      speedY = -1;
-    }
-  }
-  
-  // Start the game loop
-  const startGame = () => {
-    changeFoodPosition();
-    gameInterval = setInterval(() => {
-      moveSnake();
-      drawGame();
-    }, speed);
-  }
+    // Draw snake
+    ctx.fillStyle = 'lime';
+    snake.forEach((segment) => {
+        ctx.beginPath();
+        ctx.arc(segment.x, segment.y, snakeSize / 2, 0, Math.PI * 2);
+        ctx.fill();
+    });
 
-  const initGame = () => {
-    score = 0;
-    snake = [{ x: 5, y: 10 }];
-    speedX = 0;
-    speedY = 0;
-    startGame();
-  }
+    requestAnimationFrame(gameLoop);
+}
 
-  const stopGame = () => {
-    clearInterval(gameInterval);
-    alert("Game Over! Your Score: " + score);
-  }
+function generateFood() {
+    let foodPosition;
+    let isValid;
+    do {
+        isValid = true;
+        foodPosition = {
+            x: Math.random() * (canvas.width - snakeSize * 2) + snakeSize,
+            y: Math.random() * (canvas.height - snakeSize * 2) + snakeSize,
+        };
 
-//start game
-document.addEventListener("mousemove", handleMouseMove);
-initGame();
+        // Ensure food doesn't spawn on the snake
+        for (let segment of snake) {
+            if (
+                Math.hypot(segment.x - foodPosition.x, segment.y - foodPosition.y) <
+                snakeSize
+            ) {
+                isValid = false;
+                break;
+            }
+        }
+    } while (!isValid);
+
+    return foodPosition;
+}
+
+gameLoop();
